@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+browser->>server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+activate server
+Note right of browser: Browser sends new note to server.
+Note over server: The server adds the new <br/> note into its database.
+server-->>browser: HTTP 201, Resource created [{content: "Midnight sun", date: "2026-01-15T13:25:43.772Z"}]
+deactivate server
+Note left of server: The server sends a 201 code telling <br/> the browser that it understood the POST.
+
+Note right of browser: The browser adds the new note on its end <br/> without the need of reloading the page.  
