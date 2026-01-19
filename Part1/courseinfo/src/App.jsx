@@ -1,25 +1,25 @@
 const App = () => {
   console.log("App started")
-  const course = 'Half Stack application development'
-    const part1 = {
+    const course = 'Half Stack application development'
+    const parts = [
+    {
       name: 'Fundamentals of React',
       exercises: 10
-    }
-    const part2 = {
+    },
+    {
       name: 'Using props to pass data',
       exercises: 7
-    }
-    const part3 = {
+    },
+    {
       name: 'State of a component',
       exercises: 14
     }
-
-    const t = [part1, part2, part3]
+  ]
   return (
     <div>
       <Header name={course}/>
-      <Content content={t}/>
-      <Total totalExercises={t}/>
+      <Content content={parts}/>
+      <Total totalExercises={parts}/>
     </div>
   )
 }
