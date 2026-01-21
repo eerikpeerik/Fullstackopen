@@ -53,15 +53,10 @@ const App = () => {
   return (
     <div>
       <Header />
-      <button onClick={handleGoodClick}>
-        good
-      </button>
-      <button onClick={handleNeutralClick}>
-        neutral
-      </button>
-      <button onClick={handleBadClick}>
-        bad
-      </button>
+      <Button onClick={handleGoodClick} text="Good"/>
+      <Button onClick={handleNeutralClick} text="Neutral"/>
+      <Button onClick={handleBadClick} text="bad"/>
+       <h1>Statistics</h1> 
       <Statistics
         good={good} 
         neutral={neutral} 
@@ -87,31 +82,39 @@ const Statistics = (props) => {
   if (props.all == 0){
     return(
       <div>
-      <h1>Statistics</h1> 
-      <p>No feedback given.</p>
+        <p>No feedback given.</p>
       </div>
     )}
   else{
-  return (<div>
-    <h1>Statistics</h1> 
-      <p>good {props.good}</p>
-      <p>neutral {props.neutral}</p>
-      <p>bad {props.bad}</p>
-      <p>all {props.all}</p>
-      <p>average {props.average}</p>
-      <p>positive {props.positive}%</p>
+  return (
+  <div>
+      <StatisticLine text="Good: " value={props.good}/>
+      <StatisticLine text="Neutral :" value={props.neutral}/>
+      <StatisticLine text="Bad: " value={props.bad}/>
+      <StatisticLine text="All: " value={props.all}/>
+      <StatisticLine text="Average: " value={props.average}/>
+      <StatisticLine text="Positive: " value={props.positive}/>
   </div>
   )
   }
 }
 
-const Button = (props) => (
-  <button onClick={props.onClick}>
-  {props.text}
+const Button = ({onClick, text}) => (
+  <button onClick={onClick}>
+  {text}
   </button>
 )
 
-const Display = props => <div>{props.value}</div>
+//const Display = props => <div>{props.value}</div>
+
+const StatisticLine = (props) => {
+  console.log("Value passed in StatLine "+props.value)
+  return(
+    <div>
+      <p> {props.text} {props.value} </p>
+    </div>
+  )
+}
 
 
 export default App
