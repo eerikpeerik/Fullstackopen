@@ -10,8 +10,8 @@ const App = () => {
   var average = 0
   var positive = 0
   if (all != 0) {  
-    average = ((good - bad)/all)
-    positive = (good/all)*100
+    average = ((good - bad)/all).toFixed(1)
+    positive = ((good/all)*100).toFixed(1)
   }
 
 
@@ -88,12 +88,16 @@ const Statistics = (props) => {
   else{
   return (
   <div>
-      <StatisticLine text="Good: " value={props.good}/>
-      <StatisticLine text="Neutral :" value={props.neutral}/>
-      <StatisticLine text="Bad: " value={props.bad}/>
-      <StatisticLine text="All: " value={props.all}/>
-      <StatisticLine text="Average: " value={props.average}/>
-      <StatisticLine text="Positive: " value={props.positive + "%"}/>
+    <table>
+      <tbody>
+        <StatisticLine text="Good " value={props.good}/>
+        <StatisticLine text="Neutral " value={props.neutral}/>
+        <StatisticLine text="Bad " value={props.bad}/>
+        <StatisticLine text="All " value={props.all}/>
+        <StatisticLine text="Average " value={props.average}/>
+        <StatisticLine text="Positive " value={props.positive + "%"}/>
+      </tbody>
+    </table>
   </div>
   )
   }
@@ -110,9 +114,10 @@ const Button = ({onClick, text}) => (
 const StatisticLine = (props) => {
   console.log("Value passed in StatLine "+props.value)
   return(
-    <div>
-      <p> {props.text} {props.value} </p>
-    </div>
+    <tr>
+      <td> {props.text}  </td>
+      <td> {props.value} </td>
+    </tr>
   )
 }
 
