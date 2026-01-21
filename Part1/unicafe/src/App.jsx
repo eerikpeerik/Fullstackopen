@@ -8,8 +8,10 @@ const App = () => {
   const [all, setAll] = useState(0)
 
   var average = 0
+  var positive = 0
   if (all != 0) {  
     average = ((good - bad)/all)
+    positive = (good/all)
   }
 
 
@@ -66,6 +68,7 @@ const App = () => {
       <p>bad {bad}</p>
       <p>all {all}</p>
       <p>average {average}</p>
+      <p>positive {positive}%</p>
     </div>
   )
 }
