@@ -11,7 +11,7 @@ const App = () => {
   var positive = 0
   if (all != 0) {  
     average = ((good - bad)/all)
-    positive = (good/all)
+    positive = (good/all)*100
   }
 
 
@@ -62,13 +62,14 @@ const App = () => {
       <button onClick={handleBadClick}>
         bad
       </button>
-      <h1>Statistics</h1>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {all}</p>
-      <p>average {average}</p>
-      <p>positive {positive}%</p>
+      <Statistics
+        good={good} 
+        neutral={neutral} 
+        bad={bad} 
+        all={all} 
+        average={average} 
+        positive={positive}
+      /> 
     </div>
   )
 }
@@ -81,6 +82,27 @@ const Header = () => {
   )
 }
 
+const Statistics = (props) => {
+  console.log("Avg: "+props.average, "All: "+props.all)
+  return (<div>
+    <h1>Statistics</h1> 
+      <p>good {props.good}</p>
+      <p>neutral {props.neutral}</p>
+      <p>bad {props.bad}</p>
+      <p>all {props.all}</p>
+      <p>average {props.average}</p>
+      <p>positive {props.positive}%</p>
+  </div>
+  )
+}
+
+const Button = (props) => (
+  <button onClick={props.onClick}>
+  {props.text}
+  </button>
+)
+
+const Display = props => <div>{props.value}</div>
 
 
 export default App
