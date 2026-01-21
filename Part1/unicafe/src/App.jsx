@@ -84,6 +84,14 @@ const Header = () => {
 
 const Statistics = (props) => {
   console.log("Avg: "+props.average, "All: "+props.all)
+  if (props.all == 0){
+    return(
+      <div>
+      <h1>Statistics</h1> 
+      <p>No feedback given.</p>
+      </div>
+    )}
+  else{
   return (<div>
     <h1>Statistics</h1> 
       <p>good {props.good}</p>
@@ -94,6 +102,7 @@ const Statistics = (props) => {
       <p>positive {props.positive}%</p>
   </div>
   )
+  }
 }
 
 const Button = (props) => (
