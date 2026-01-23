@@ -17,20 +17,29 @@ const App = () => {
 
   const handleAnecdotePicker = () => {
     const newRand = Math.floor(Math.random() * anecdotes.length)
+
     setRand(newRand)
     setSelected(newRand)
-    console.log("RNG: "+rand)
+
+    console.log("RNG: " + rand)
+    
 }
 
   const handleVote = () => {
     const newVotes = [...votes]
+    
     newVotes[selected] += 1
+
     setVotes(newVotes)
     console.log(newVotes)
+
   }
+
+  const mostVotes = votes.indexOf(Math.max(...votes))
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {anecdotes[selected]}
       <p>has {votes[selected]} votes</p>
       <div>        
@@ -41,6 +50,9 @@ const App = () => {
           Next anecdote
         </button>
       </div>
+      <h1>Anecdote with most votes</h1>
+      <p>{anecdotes[mostVotes]}</p>
+      <p>has {votes[mostVotes]} votes</p>
     </div>
   )
 }
